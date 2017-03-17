@@ -1,0 +1,5 @@
+name: Defuse
+main: net.corecrafted.defuse.DefuseLaunch
+version: 1.0
+author: ThisTNTSquid
+description: Simple plugin that defuse a TNT when clicking on a primed TNT
