@@ -12,11 +12,11 @@ public class DefuseLaunch extends JavaPlugin{
 	PluginDescriptionFile pdf = this.getDescription();
 	
 	public void onEnable(){
-		console.sendMessage(ChatColor.GREEN+"Defuse v-"+pdf.getVersion()+" has been enabled");
+		console.sendMessage(ChatColor.GREEN+">> Defuse v"+pdf.getVersion()+" has been enabled");
 		this.getServer().getPluginManager().registerEvents(new Defuse(), this);
 	}
 	
 	public void onDisable(){
-		console.sendMessage(ChatColor.AQUA+"Defuse v-"+pdf.getVersion()+" has been unloaded");
+		console.sendMessage(ChatColor.AQUA+">> Defuse v"+pdf.getVersion()+" has been unloaded");
 	}
 }
