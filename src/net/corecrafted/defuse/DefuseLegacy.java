@@ -10,34 +10,30 @@ import org.bukkit.entity.TNTPrimed;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerInteractEntityEvent;
-import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import net.md_5.bungee.api.ChatColor;
 
-public class Defuse implements Listener {
+public class DefuseLegacy implements Listener {
 
 
 	private DefuseLaunch plugin;
 
-	public Defuse(DefuseLaunch pl) {
+	public DefuseLegacy(DefuseLaunch pl) {
 		plugin = pl;
 	}
 	
+	@SuppressWarnings("deprecation")
 	@EventHandler
 	public void onDefuse(PlayerInteractEntityEvent e) {
 		
 		if (e.getRightClicked() instanceof TNTPrimed) {
-			if (e.getHand() == EquipmentSlot.OFF_HAND) {
-				return;
-			}
-
 			if (plugin.getConfig().getBoolean("use-custom-defuse-item") == true) {
 				try {
 					getDefuseItemType();
 				} catch (NullPointerException exception) {
-					plugin.getServer().getConsoleSender().sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("prefix"))+" "+ChatColor.RED+plugin.getConfig().getString("item-id")+" is not a proper item");
+					plugin.getServer().getConsoleSender().sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("prefix"))+ChatColor.RED+" "+plugin.getConfig().getString("item-id")+" is not a proper item");
 					runRemoveTnt(e);
 				} finally {
 					ItemStack item = getDefuseItemType();
@@ -47,7 +43,7 @@ public class Defuse implements Listener {
 					itemMeta.setDisplayName(itemDisplayName);
 					item.setItemMeta(itemMeta);
 
-					if (e.getPlayer().getInventory().getItemInMainHand().equals(item)) {
+					if (e.getPlayer().getItemInHand().equals(item)) {
 						runRemoveTnt(e);
 					} else {
 						return;

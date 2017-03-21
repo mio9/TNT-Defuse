@@ -3,6 +3,7 @@ package net.corecrafted.defuse;
 import java.io.File;
 import java.util.logging.Logger;
 
+import org.bukkit.Bukkit;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -17,9 +18,10 @@ public class DefuseLaunch extends JavaPlugin {
 
 	public void onEnable() {
 		console.sendMessage(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("prefix"))+ChatColor.GREEN + " Defuse v" + pdf.getVersion() + " has been enabled");
-		this.getServer().getPluginManager().registerEvents(new Defuse(this), this);
 		regConfig();
+		regEvent();
 		this.getCommand("defuse").setExecutor(new DefuseCommand(this));
+		
 	}
 
 	public void onDisable() {
@@ -45,6 +47,17 @@ public class DefuseLaunch extends JavaPlugin {
 		} finally {
 			logger.info("Config loaded");
 		}
+	}
+	
+	private void regEvent(){
+		logger.info("This server is running in "+Bukkit.getVersion());
+		if (Bukkit.getVersion().contains("1.8")){
+			logger.info("1.8 detected , using legacy method..");
+			this.getServer().getPluginManager().registerEvents(new DefuseLegacy(this), this);
+		} else {
+			this.getServer().getPluginManager().registerEvents(new Defuse(this), this);
+		}
+		
 	}
 
 }

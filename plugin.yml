@@ -1,6 +1,6 @@
 name: Defuse
 main: net.corecrafted.defuse.DefuseLaunch
-version: 1.1
+version: 1.1a
 author: ThisTNTSquid
 description: Simple plugin that defuse a TNT when clicking on a primed TNT
 permissions:
