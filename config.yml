@@ -1,0 +1,34 @@
+# ===================================
+#
+#  TNT Defuse - Configuration File
+#
+# ===================================
+
+
+# +------------------+
+# | General Settings |
+# +------------------+
+
+# Customize the prefix of plugin generated messages
+prefix: '&7[TNTDefuse]'
+
+# Choose whether you are using permission to limit players or not
+use-permission: true
+
+# The message to be displayed when no permission
+no-permission-message: '&cYou do not have permission to defuse primed TNT'
+no-command-permission-message: '&cYou do not have permission to do this'
+
+
+# +----------------------+
+# | Defuse Item Settings |
+# +----------------------+
+
+# Choose whether to use custom defuse item or not
+use-custom-defuse-item: false
+
+# Custom defuse item (e.g. SHEARS, DIAMOND_SWORD, CAKE)
+item-id: SHEARS
+
+# Name of custom defuse item (setting to '0' will make it using vanilla name, in another word, no rename)
+item-displayname: '&4Defuse Shears'
