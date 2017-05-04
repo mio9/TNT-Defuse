@@ -12,23 +12,24 @@
 # Customize the prefix of plugin generated messages
 prefix: '&7[TNTDefuse]'
 
-# Choose whether you are using permission to limit players or not
-use-permission: true
+# Customize what to display when player attempt to execute commands that they do not have permission to do so
+no-permission-message: '&cSorry, but you do not have permission to do so'
 
-# The message to be displayed when no permission
-no-permission-message: '&cYou do not have permission to defuse primed TNT'
-no-command-permission-message: '&cYou do not have permission to do this'
+# Set the range of TNT to be cleared for avoiding duplication when constant redstone signal is powering the TNT (default: 0.5)
+clear-range: 0.5
 
 
-# +----------------------+
-# | Defuse Item Settings |
-# +----------------------+
+# +-----------------------+
+# | Defuse Items Settings |
+# +-----------------------+
 
-# Choose whether to use custom defuse item or not
-use-custom-defuse-item: false
+# Choose whether to use custom defined defuse item or not
+# Make sure you have a proper defuse item defined before changing this to "true", otherwise, no one will be able to defuse any TNT
+use-defuse-item: false
 
-# Custom defuse item (e.g. SHEARS, DIAMOND_SWORD, CAKE)
-item-id: SHEARS
+# Enable what so-call the TNT capturer item
+# Again, make sure you have a proper holder item defined before changing this to "true:, otherwise, this function will be wasted.
+enable-holder: false
 
-# Name of custom defuse item (setting to '0' will make it using vanilla name, in another word, no rename)
-item-displayname: '&4Defuse Shears'
+
+# End of config

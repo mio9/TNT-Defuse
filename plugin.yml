@@ -1,22 +1,25 @@
-name: Defuse
-main: net.corecrafted.defuse.DefuseLaunch
-version: 1.1a
+name: TNTDefuse
+main: net.corecrafted.tntdefuse.Main
+version: 1.2
 author: ThisTNTSquid
 description: Simple plugin that defuse a TNT when clicking on a primed TNT
 permissions:
   defuse.deactivate:
     description: Define permission for whether player can deactivate ignited TNT
     default: op
-  defuse.giveitem:
-    description: Give yourself / others a defuse item
+  defuse.pickup:
+    description: Allow player with this permission to pickup primed TNT with a defined tool
     default: op
-  defuse.changeperm:
-    description: Permission for changing the state of using permission or not
+  defuse.item:
+    description: Permission to give and define items in this plugin
     default: op
   defuse.reload:
     description: Reload the plugin config file
-    defsult: op
+    default: op
+  defuse.debug:
+    description: Permission to check detail of item holding in hand
+    default: op
 commands:
-  defuse:
+  tntdefuse:
     description: Defuse plugin main command
-    usage: /defuse [args]
+    usage: /tntdefuse [args]
