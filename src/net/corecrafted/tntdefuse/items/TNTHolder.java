@@ -50,8 +50,6 @@ public class TNTHolder implements Listener {
 					inv.setItemInMainHand(setItemFuse(playerHolding, fuseTick));
 					tnt.remove();
 					return;
-					// Get TNT itself
-					// get fuseticks of tnt -> store value to lore of the item
 				}
 
 			} else {
@@ -85,17 +83,9 @@ public class TNTHolder implements Listener {
 				}
 				
 			}
-			// get tnt values from item lore
-			// clear item lore
-			// spawn in tnt on the side the block clicked (with fuse data)
 		}
 	}
 
-	/*
-	 * @EventHandler public void onDebug(PlayerInteractEvent e){ if
-	 * (e.getHand().equals(EquipmentSlot.OFF_HAND)){ return; }
-	 * e.getPlayer().sendMessage(e.getBlockFace().toString()); }
-	 */
 	private ItemStack setItemFuse(ItemStack item, int fuseTick) {
 		ItemStack holdingItem = item;
 		List<String> lore = new ArrayList<String>();
