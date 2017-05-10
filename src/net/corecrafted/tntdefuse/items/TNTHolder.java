@@ -61,29 +61,31 @@ public class TNTHolder implements Listener {
 
 	@EventHandler
 	public void onRelease(PlayerInteractEvent e) {
-		if (e.getPlayer().hasPermission("defuse.pickup")) {
-			if (plugin.getConfig().getBoolean("enable-holder") == false) {
-				return;
-			}
-			if (e.getHand().equals(EquipmentSlot.OFF_HAND)) {
-				return;
-			}
-			if (e.getAction().equals(Action.RIGHT_CLICK_BLOCK)) {
-				PlayerInventory inv = e.getPlayer().getInventory();
-				ItemStack itemHolding = inv.getItemInMainHand();
-				if (itemHolding.getItemMeta().getEnchantLevel(Enchantment.PROTECTION_ENVIRONMENTAL)==593 && itemHolding.getType()==plugin.getItemsFile().getItemStack("holder").getType()){
-					int tntFuse = getItemFuse(itemHolding);
-					inv.setItemInMainHand(plugin.getItemsFile().getItemStack("holder"));
-					Location tntSpawnLoc = getClickedLoc(e.getClickedBlock(), e.getBlockFace());
-					TNTPrimed tnt = e.getPlayer().getWorld().spawn(tntSpawnLoc, TNTPrimed.class);
-					tnt.setFuseTicks(tntFuse);
+		if (e.getAction().equals(Action.RIGHT_CLICK_BLOCK)) {
+			if (e.getPlayer().hasPermission("defuse.pickup")) {
+				if (plugin.getConfig().getBoolean("enable-holder") == false) {
 					return;
-				} else {
+				}
+				if (e.getHand().equals(EquipmentSlot.OFF_HAND)) {
 					return;
 				}
 				
 			}
+			PlayerInventory inv = e.getPlayer().getInventory();
+			ItemStack itemHolding = inv.getItemInMainHand();
+			if (itemHolding.getItemMeta().getEnchantLevel(Enchantment.PROTECTION_ENVIRONMENTAL)==593 && itemHolding.getType()==plugin.getItemsFile().getItemStack("holder").getType()){
+				int tntFuse = getItemFuse(itemHolding);
+				inv.setItemInMainHand(plugin.getItemsFile().getItemStack("holder"));
+				Location tntSpawnLoc = getClickedLoc(e.getClickedBlock(), e.getBlockFace());
+				TNTPrimed tnt = e.getPlayer().getWorld().spawn(tntSpawnLoc, TNTPrimed.class);
+				tnt.setFuseTicks(tntFuse);
+				return;
+			} else {
+				return;
+			}
+			
 		}
+		
 	}
 
 	private ItemStack setItemFuse(ItemStack item, int fuseTick) {
